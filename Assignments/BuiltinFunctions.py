@@ -1,6 +1,6 @@
 from functools import reduce
 
-current = 'Complex'
+current = 'Assignment'
 
 
 # Map()
@@ -23,10 +23,10 @@ if current == 'Map':
 lst = [34, 21, 23, 24, 101, 2332, 1, 22]
 if current == 'Reduce':
     print(max(lst))
-
-max_find = lambda a, b: a if (a > b) else b
-if current == 'Reduce':
+    max_find = lambda a, b: a if (a > b) else b
     print('Max: ' + str(reduce(max_find, lst)))
+    mylist = [47,11,42,13]
+    print(reduce(lambda x,y: x+y,mylist))
 
 
 # filter
@@ -78,3 +78,40 @@ if current == 'AllNAny':
 if current == 'Complex':
     print(complex(2,3))
     print(complex('10+2j'))
+
+if current == 'Assignment':
+    #Problem 1
+    def word_lengths(phrase):
+        return list(map(lambda word: len(word), phrase.split(' ')))
+
+    print(word_lengths('How long are the words in this phrase'))
+
+    #Problem 2
+    def digits_to_num(digits):
+        return reduce(lambda x, y: x*10 + y, digits)
+
+    print(digits_to_num([3,4,3,2,1]))
+
+    #Problem 3
+    def filter_words(word_list, target_letter):
+        return list(filter(lambda word: str(word[0]).lower()==target_letter.lower(),word_list))
+
+    l = ['hello', 'are', 'cat', 'Goat', 'ham', 'hi', 'go', 'to', 'heart']
+    print(filter_words(l,'g'))
+
+    #Problem 4
+    def concatenate(L1, L2, connecter):
+        return [word1+connecter+word2 for (word1,word2) in zip(L1,L2)]
+        pass
+    print(concatenate(['A','B'],['a','b'],'-'))
+
+    #Problem 5
+    def d_list(L):
+        return {key:value for value,key in enumerate(L)}
+    print(d_list(['a','b','c']))
+
+    #Problem 6
+    def count_match_index(L):
+        return len([num for count,num in enumerate(L) if num == count])
+
+    print(count_match_index([0,2,2,1,5,5,6,10]))
